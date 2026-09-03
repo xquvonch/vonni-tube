@@ -1,0 +1,37 @@
+* {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.search-bar {
+  border: none;
+  outline: none;
+  width: 350px;
+}
+
+.category-btn{
+  font-weight: bold;
+  text-transform:capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  outline:none;
+  border:none;
+
+  padding:7px 15px;
+  margin:10px 0px;
+  border-radius: 20px;
+  transform: all 0.3s ease;
+
+}
+
+.category-btn:hover{
+background-color: #76323f !important;
+color:white !important
+}
+.category-btn:hover span{
+  color:white !important
+}

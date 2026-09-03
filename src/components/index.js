@@ -1,0 +1,7 @@
+export  {default as App} from './app/app.jsx'
+export {default as Channel} from './channel/Channel.jsx'
+export {default as Main} from './main/Main.jsx'
+export {default as Navbar} from './navbar/Navbar.jsx'
+export {default as VidioDetail} from './vidio-detail/VidioDetail.jsx'
+export {default as Category} from './category/Category.jsx'
+export {default as Search} from  './search/Search.jsx'
