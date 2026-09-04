@@ -7,7 +7,6 @@ import {
   Home,
   LiveTv,
   MusicNote,
-  Newspaper,
   OndemandVideo,
   School,
   Science,
@@ -19,7 +18,7 @@ import {
 export const logo = "./react.png";
 
 export const category = [
-  { name: "Home", icon: <Home /> },
+  { name: "News", icon: <Home /> },
   { name: "Movie", icon: <OndemandVideo /> },
   { name: "Live", icon: <LiveTv /> },
   { name: "Gaming", icon: <SportsEsports /> },
@@ -32,7 +31,6 @@ export const category = [
   { name: "GYM", icon: <FitnessCenter /> },
   {name: "Beauty", icon: <FaceRetouchingNatural /> },
   { name: "Music", icon: <MusicNote /> },
-  { name: "News", icon: <Newspaper /> },
 { name: "Travel", icon: <TravelExplore /> },
 { name: "Science", icon: <Science /> },
 ];

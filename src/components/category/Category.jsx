@@ -8,13 +8,17 @@ const Category = ({handlesellectedCategory, sellectedCategory}) => {
 
 
   return (
-    <Stack direction={'row'} style={{overflowX:"scroll",  scrollbarWidth: "none",
+    <Stack direction={'row'} sx={{
+    overflowY: "auto",
     "&::-webkit-scrollbar": {
       display: "none",
-    },}}>
+    },
+    scrollbarWidth: "none",
+    msOverflowStyle: "none",
+  }}>
       {category.map((item) => {
         return (
-          <button key={item.name} className="category-btn" style={{borderRadius:'0px'  , background:item.name===sellectedCategory && colors.secondary, 
+          <button    key={item.name} className="category-btn" style={{borderRadius:'0px'  , background:item.name===sellectedCategory && colors.secondary, 
             color:item.name===sellectedCategory && "#fff"
           }} onClick={()=>(handlesellectedCategory(item.name))}  >
             <span style={{color:colors.secondary,
