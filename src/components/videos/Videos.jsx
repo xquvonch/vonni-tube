@@ -1,31 +1,25 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 import React from "react";
 import VideoCard from "../video-card/VideoCard";
 import ChannelCard from "../channel-card/channel-card";
+import Loader from "../loader/Loader";
 
 const Videos = ({ videos }) => {
-
-  if (!Array.isArray(videos)) {
-    return null;
-  }
+ if(!videos.length) return <Loader/>
 
   return (
-    <Stack
-      display={"flex"}
-      width={"100%"}
-      direction={"row"}
-      flexWrap={"wrap"}
-      alignItems={"center"}
-      justifyContent={"start"}
-      gap={2}
+    <Grid
+    container
+      spacing={{xs:2, md:4}} 
+      columns={{xs:4, sm:8, md:12}}
     >
       {videos?.map((item) => (
-        <Box key={item.id.videoId}>
+        <Grid key={item.id.videoId} item xs={2} sm={4} md={4}>
           {item.id.videoId && <VideoCard video={item} />}
           {item.id.channelId && <ChannelCard video={item} />}
-        </Box>
+        </Grid>
       ))}
-    </Stack>
+    </Grid>
   );
 };
 

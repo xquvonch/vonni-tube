@@ -10,6 +10,7 @@ const navigate = useNavigate()
     e.preventDefault();
    if(value){
     navigate(`/search/${value}`)
+    setvalue('')
    }
   };
 
