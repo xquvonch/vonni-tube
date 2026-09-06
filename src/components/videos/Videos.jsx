@@ -1,4 +1,4 @@
-import { Box, Grid, Stack } from "@mui/material";
+import { Grid} from "@mui/material";
 import React from "react";
 import VideoCard from "../video-card/VideoCard";
 import ChannelCard from "../channel-card/channel-card";

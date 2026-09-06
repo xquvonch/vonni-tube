@@ -21,7 +21,7 @@ const Category = ({handlesellectedCategory, sellectedCategory}) => {
           <button    key={item.name} className="category-btn" style={{borderRadius:'0px'  , background:item.name===sellectedCategory && colors.secondary, 
             color:item.name===sellectedCategory && "#fff"
           }} onClick={()=>(handlesellectedCategory(item.name))}  >
-            <span style={{color:colors.secondary,
+            <span style={{
                 color:item.name===sellectedCategory ? "#fff" :sellectedCategory,
                 marginRight:'15px'}}>{item.icon}</span>
             <span style={{opacity:'1'}}>{item.name}</span>
