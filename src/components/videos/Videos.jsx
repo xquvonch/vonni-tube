@@ -5,7 +5,8 @@ import ChannelCard from "../channel-card/channel-card";
 import Loader from "../loader/Loader";
 
 const Videos = ({ videos }) => {
- if(!videos.length) return <Loader/>
+ if (!videos || videos.length === 0) {
+ return <Loader/>}
 
   return (
     <Grid
