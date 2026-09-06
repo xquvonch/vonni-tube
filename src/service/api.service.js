@@ -39,7 +39,7 @@ export const ApiService = {
         params: {
           part: "snippet",
           type: "video",
-          maxResults: 10,
+          maxResults: 80,
           ...extraParams, // faqat shu yerdan q keladi
         },
         headers: {
