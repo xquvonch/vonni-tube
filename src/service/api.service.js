@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
-const RAPID_API_KEY=process.env.REACT_APP_API_KEY
 const API_KEY = "AIzaSyCElhHYIArOdxk4Ml9e21LaZwWPRqXDwzI"
 
 export const ApiService = {
