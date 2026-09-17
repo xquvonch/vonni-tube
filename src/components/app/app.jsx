@@ -12,7 +12,7 @@ const App = () => {
         <Route path="/" element={<Main />} />
         <Route path="/channel/:id" element={<Channel />} />
         <Route path="/search/:id" element={<Search />} />
-        <Route path="/vidio/:id" element={<VidioDetail />} />
+        <Route path="/video/:id" element={<VidioDetail />} />
       </Routes>
     </Box>
   );

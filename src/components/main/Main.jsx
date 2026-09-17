@@ -6,34 +6,35 @@ import Videos from "../videos/Videos";
 import { ApiService } from "../../service/api.service";
 
 const Main = () => {
-  const [sellectedCategory, setSellectedCategory] = useState("Movie");
-  const [videos, setvideos] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("News");
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
+    const getVideos = async () => {
       try {
         const data = await ApiService.fetching(
-          `search?part=snippet&q=${sellectedCategory}`,
+          `search?part=snippet&q=${encodeURIComponent(selectedCategory)}`,
         );
-        setvideos(data.data.items);
+        setVideos(data.items || []);
       } catch (err) {
         console.log(err);
+        setVideos([]);
       }
     };
-    getData();
-  }, [sellectedCategory]);
+    getVideos();
+  }, [selectedCategory]);
 
-  const handlesellectedCategory = (category) => setSellectedCategory(category);
+  const handleSelectedCategory = (category) => setSelectedCategory(category);
   return (
     <Stack>
       <Category
-        handlesellectedCategory={handlesellectedCategory}
-        sellectedCategory={sellectedCategory}
+        handlesellectedCategory={handleSelectedCategory}
+        sellectedCategory={selectedCategory}
       />
       <Box p={2} style={{ height: "90vh" }}>
         <Container maxWidth={"90%"}>
           <Typography variant={"h4"} fontWeight={"bold"} mb={2}>
-            {sellectedCategory}{" "}
+            {selectedCategory}{" "}
             <span style={{ color: colors.secondary }}>vidios</span>
           </Typography>
           <Videos videos={videos} />

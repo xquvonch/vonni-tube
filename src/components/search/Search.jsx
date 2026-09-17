@@ -13,19 +13,18 @@ const Search = () => {
     const getData = async () => {
       try {
         const data = await ApiService.fetching(`search?part=snippet&q=${id}`);
-        setvideos(data.data.items);
+        setvideos(data.items);
       } catch (err) {
         console.log(err);
       }
     };
-    console.log(getData());
+   getData()
   }, [id]);
-  console.log(id);
   return (
     <Box p={2} sx={{ height: "90vh" }}>
       <Container maxWidth={"90%"}>
         <Typography variant={"h4"} fontWeight={"bold"} mb={2}>
-          Search results fro{" "}
+          Search results for{" "}
           <span style={{ color: colors.secondary }}> {id}</span> videos
         </Typography>
 

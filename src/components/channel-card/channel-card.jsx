@@ -1,7 +1,10 @@
 import { CheckCircle } from "@mui/icons-material";
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const ChannelCard = ({ video }) => {
+
+  console.log(video)
   return (
     <Box
       sx={{
@@ -15,30 +18,46 @@ const ChannelCard = ({ video }) => {
         margin: "auto",
       }}
     >
-      <CardContent>
-        <CardMedia
-          image={video?.snippet?.thumbnails?.default?.url}
-          alt={video?.snippet?.title}
+      <Link to={`/channel/${video?.snippet?.channelId}`}>
+        <CardContent
           sx={{
-            borderRadius: "50%",
-            height: "180px",
-            width: "180px",
-            mb: 2,
-            border: "1px solid #e33e3e",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            textAlign: "center",
           }}
-        />
+        >
+          <CardMedia
+            image={video?.snippet?.thumbnails?.high?.url}
+            alt={video?.snippet?.title}
+            sx={{
+              borderRadius: "50%",
+              height: "180px",
+              width: "180px",
+              mb: 2,
+              border: "1px solid #e33e3e",
+            }}
+          />
 
-        <Typography variant="h6">
-          {video?.snippet?.title}{" "}
-          <CheckCircle
-            sx={{ fontsize: "14px", color: "gray", ml: "5px" }}
-          />{" "}
-        </Typography>
+          <Typography variant="h6">
+            {video?.snippet?.title}{" "}
+            <CheckCircle
+              sx={{ fontsize: "14px", color: "gray", ml: "5px" }}
+            />{" "}
+          </Typography>
 
-        {video?.statistics?.subscriberCount && <Typography sx={{fontsize:'15px', fontWeight:'500' , color:'gray'}}>
-            {parseInt(video?.statistics?.subscriberCount).toLocaleString('en-US')} Subscribers
-            </Typography>}
-      </CardContent>
+          {video?.statistics?.subscriberCount && (
+            <Typography
+              sx={{ fontsize: "15px", fontWeight: "500", color: "gray" }}
+            >
+              {parseInt(video?.statistics?.subscriberCount).toLocaleString(
+                "en-US",
+              )}{" "}
+              Subscribers
+            </Typography>
+          )}
+        </CardContent>
+      </Link>
     </Box>
   );
 };

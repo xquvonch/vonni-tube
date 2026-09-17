@@ -19,7 +19,7 @@ const Category = ({handlesellectedCategory, sellectedCategory}) => {
       {category.map((item) => {
         return (
           <button    key={item.name} className="category-btn" style={{borderRadius:'0px'  , background:item.name===sellectedCategory && colors.secondary, 
-            color:item.name===sellectedCategory && "#fff"
+            color:item.name===sellectedCategory ? "#fff" :"#000"
           }} onClick={()=>(handlesellectedCategory(item.name))}  >
             <span style={{
                 color:item.name===sellectedCategory ? "#fff" :sellectedCategory,
