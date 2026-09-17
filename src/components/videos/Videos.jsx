@@ -1,13 +1,12 @@
 import { Grid } from "@mui/material";
-import React from "react";
 import VideoCard from "../video-card/VideoCard";
 import ChannelCard from "../channel-card/channel-card";
 import Loader from "../loader/Loader";
 
 const Videos = ({ videos }) => {
-  // if (!videos || videos.length === 0) {
-  //   return <Loader />;
-  // }
+  if (!videos || videos.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <Grid

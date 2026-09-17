@@ -6,7 +6,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React from "react";
+
 import { colors } from "../../const/colors";
 import moment from "moment";
 import { CheckCircle } from "@mui/icons-material";

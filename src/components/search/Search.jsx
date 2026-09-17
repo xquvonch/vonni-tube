@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ApiService } from "../../service/api.service";
 import { Box, Container, Typography } from "@mui/material";

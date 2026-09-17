@@ -1,39 +1,67 @@
-import React, { useEffect, useState } from "react";
-import { data, Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { ApiService } from "../../service/api.service";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import ChannelCard from "../channel-card/channel-card";
+import Videos from "../videos/Videos";
+
 const Channel = () => {
-  const [channelDetail, setChannelDetail] = useState();
+  const [channelDetail, setChannelDetail] = useState(null);
   const [videos, setVideos] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     const getData = async () => {
       try {
+        // 1. brandingSettings qo'shildi (Banner rasm kelishi uchun shart!)
         const dataChannelDetail = await ApiService.fetching(
-          `channels?part=snippet&id=${id}`,
+          `channels?part=snippet,brandingSettings,statistics&id=${id}`
         );
-        setChannelDetail(dataChannelDetail.items[0]);
-        console.log(dataChannelDetail);
+        setChannelDetail(dataChannelDetail?.items?.[0] || null);
 
+        // 2. Kanal videolarini olish
         const dataVideo = await ApiService.fetching(
-          `search?channelId=${id}&part=snippet`,
+          `search?channelId=${id}&part=snippet&type=video&order=date&maxResults=20`
         );
-        setVideos(dataVideo);
+        setVideos(dataVideo?.items || []);
       } catch (err) {
-        console.log(err);
+        console.error("Kanal ma'lumotlarini olishda xatolik:", err);
       }
     };
 
-    getData();
+    if (id) getData();
   }, [id]);
 
+  // Banner rasm URL'ini xavfsiz olish
+  const bannerUrl =
+    channelDetail?.brandingSettings?.image?.bannerExternalUrl ||
+    channelDetail?.brandingSettings?.image?.bannerImageUrl;
+
   return (
-    <Box minHeight={"95vh"} mt={"10vh"}>
+    <Box minHeight="95vh">
       <Box>
-        <ChannelCard video={channelDetail} />
+        {/* Banner Rasm Qutisi */}
+        <Box
+          width="100%"
+          height="300px"
+          zIndex={10}
+          sx={{
+            backgroundImage: bannerUrl ? `url(${bannerUrl})` : "none",
+            backgroundColor: "#272727", // Rasm yuklanmaganda yoki bo'lmaganda zaxira fon
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+
+        {/* Kanal Kartasi */}
+        <ChannelCard video={channelDetail} marginTop="-110px" />
       </Box>
+
+      {/* Kanal Videolari Ro'yxati */}
+      <Container maxWidth="xl" sx={{ mt: 5 }}>
+        <Videos videos={videos} marginTop={"-100px"} />
+      </Container>
     </Box>
   );
 };
