@@ -13,13 +13,11 @@ const Channel = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        // 1. brandingSettings qo'shildi (Banner rasm kelishi uchun shart!)
         const dataChannelDetail = await ApiService.fetching(
           `channels?part=snippet,brandingSettings,statistics&id=${id}`
         );
         setChannelDetail(dataChannelDetail?.items?.[0] || null);
 
-        // 2. Kanal videolarini olish
         const dataVideo = await ApiService.fetching(
           `search?channelId=${id}&part=snippet&type=video&order=date&maxResults=20`
         );
@@ -32,7 +30,6 @@ const Channel = () => {
     if (id) getData();
   }, [id]);
 
-  // Banner rasm URL'ini xavfsiz olish
   const bannerUrl =
     channelDetail?.brandingSettings?.image?.bannerExternalUrl ||
     channelDetail?.brandingSettings?.image?.bannerImageUrl;
@@ -40,25 +37,21 @@ const Channel = () => {
   return (
     <Box minHeight="95vh">
       <Box>
-        {/* Banner Rasm Qutisi */}
         <Box
           width="100%"
           height="300px"
           zIndex={10}
           sx={{
             backgroundImage: bannerUrl ? `url(${bannerUrl})` : "none",
-            backgroundColor: "#272727", // Rasm yuklanmaganda yoki bo'lmaganda zaxira fon
+            backgroundColor: "#272727",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
         />
-
-        {/* Kanal Kartasi */}
         <ChannelCard video={channelDetail} marginTop="-110px" />
       </Box>
 
-      {/* Kanal Videolari Ro'yxati */}
       <Container maxWidth="xl" sx={{ mt: 5 }}>
         <Videos videos={videos} marginTop={"-100px"} />
       </Container>
