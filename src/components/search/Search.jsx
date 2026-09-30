@@ -28,7 +28,7 @@ const Search = () => {
           <span style={{ color: colors.secondary }}> {id}</span> videos
         </Typography>
 
-        <Videos videos={videos} />
+        <Videos videos={videos}  />
       </Container>
     </Box>
   );

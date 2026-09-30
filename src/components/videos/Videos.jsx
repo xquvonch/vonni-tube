@@ -1,11 +1,15 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import VideoCard from "../video-card/VideoCard";
 import ChannelCard from "../channel-card/channel-card";
 import Loader from "../loader/Loader";
 
-const Videos = ({ videos }) => {
-  if (!videos || videos.length === 0) {
+const Videos = ({ videos, suggested, loading = true }) => {
+  if (loading && (!videos || videos.length === 0)) {
     return <Loader />;
+  }
+
+  if (!videos || videos.length === 0) {
+    return <Typography color="text.secondary">Related videos topilmadi.</Typography>;
   }
 
   return (
@@ -20,7 +24,8 @@ const Videos = ({ videos }) => {
           item
           xs={4}
           sm={4}
-          md={3}
+          md={suggested ? 12 : 3}
+
         >
           {item.id.videoId && <VideoCard video={item} />}
           {item.id.channelId && <ChannelCard video={item} />}

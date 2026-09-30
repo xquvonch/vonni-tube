@@ -3,13 +3,15 @@ import axios from "axios";
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
 const API_KEY = "AIzaSyCElhHYIArOdxk4Ml9e21LaZwWPRqXDwzI"
 
+
+
 export const ApiService = {
   async fetching(endpoint) {
     try {
       const params = { key: API_KEY };
 
       if (endpoint.startsWith("search?")) {
-        params.maxResults = 100;
+        params.maxResults = 10;
       }
 
       const response = await axios.get(`${BASE_URL}/${endpoint}`, {

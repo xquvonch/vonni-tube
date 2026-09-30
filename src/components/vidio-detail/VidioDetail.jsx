@@ -17,12 +17,14 @@ import Videos from "../videos/Videos";
 const VidioDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [relatedVideos, setRelatedVideos] = useState([]);
+  const [relatedLoading, setRelatedLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     let isActive = true;
     setVideoDetail(null);
     setRelatedVideos([]);
+    setRelatedLoading(false);
 
     const getVideo = async () => {
       try {
@@ -35,13 +37,27 @@ const VidioDetail = () => {
           setVideoDetail(videoItem || {});
 
           if (videoItem?.snippet?.title) {
-            const relatedData = await ApiService.fetching(
-              `search?part=snippet&q=${encodeURIComponent(
-                videoItem.snippet.title
-              )}&type=video&maxResults=10`,
-            );
-            if (isActive) {
-              setRelatedVideos(relatedData?.items || []);
+            setRelatedLoading(true);
+            try {
+              const relatedData = await ApiService.fetching(
+                `search?part=snippet&q=${encodeURIComponent(
+                  videoItem.snippet.title,
+                )}&type=video&maxResults=10`,
+              );
+
+              if (isActive) {
+                const filteredVideos =
+                  relatedData?.items?.filter(
+                    (item) => item.id.videoId !== id,
+                  ) || [];
+
+                setRelatedVideos(filteredVideos);
+              }
+            } catch (relatedError) {
+              console.error("Related videolarni olishda xatolik:", relatedError);
+              if (isActive) setRelatedVideos([]);
+            } finally {
+              if (isActive) setRelatedLoading(false);
             }
           }
         }
@@ -50,6 +66,7 @@ const VidioDetail = () => {
         if (isActive) {
           setVideoDetail({});
           setRelatedVideos([]);
+          setRelatedLoading(false);
         }
       }
     };
@@ -79,11 +96,14 @@ const VidioDetail = () => {
     <Box minHeight="90vh" p={{ xs: 2, md: 4 }}>
       <Stack direction={{ xs: "column", md: "row" }} gap={3}>
         {/* Chap tomon: Video va Ma'lumotlar */}
-        <Box flex={1} width={{ xs: "100%", md: "72%" }}>
+        <Box flex={1} width={{ xs: "75%", md: "72%" }}>
           <Box
+            // className='react-player'
+
             sx={{
               position: "relative",
               width: "100%",
+
               aspectRatio: "16 / 9",
               borderRadius: "12px",
               overflow: "hidden",
@@ -135,17 +155,16 @@ const VidioDetail = () => {
             sx={{ opacity: 0.8 }}
           >
             <Stack direction="row" alignItems="center" gap="4px">
-              <Visibility fontSize="small" />
               <Typography variant="body2">
-                {parseInt(statistics?.viewCount || 0).toLocaleString()}{" "}
-                ko'rishlar
+                <Visibility />
+                {parseInt(statistics?.viewCount || 0).toLocaleString()} views
               </Typography>
             </Stack>
 
             <Stack direction="row" alignItems="center" gap="4px">
               <FavoriteOutlined fontSize="small" />
               <Typography variant="body2">
-                {parseInt(statistics?.likeCount || 0).toLocaleString()} layklar
+                {parseInt(statistics?.likeCount || 0).toLocaleString()} likes
               </Typography>
             </Stack>
 
@@ -153,7 +172,7 @@ const VidioDetail = () => {
               <MarkChatRead fontSize="small" />
               <Typography variant="body2">
                 {parseInt(statistics?.commentCount || 0).toLocaleString()}{" "}
-                izohlar
+                comments
               </Typography>
             </Stack>
           </Stack>
@@ -198,11 +217,11 @@ const VidioDetail = () => {
         <Box
           width={{ xs: "100%", md: "28%" }}
           sx={{
-            maxHeight: { md: "calc(100vh - 100px)" },
+            maxHeight: { md: "calc(200vh)" },
             overflowY: "auto",
           }}
         >
-          <Videos videos={relatedVideos} />
+          <Videos videos={relatedVideos} suggested loading={relatedLoading} />
         </Box>
       </Stack>
     </Box>
