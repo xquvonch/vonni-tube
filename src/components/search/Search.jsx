@@ -18,7 +18,7 @@ const Search = () => {
         console.log(err);
       }
     };
-   getData()
+    getData();
   }, [id]);
   return (
     <Box p={2} sx={{ height: "90vh" }}>
@@ -28,7 +28,7 @@ const Search = () => {
           <span style={{ color: colors.secondary }}> {id}</span> videos
         </Typography>
 
-        <Videos videos={videos}  />
+        <Videos videos={videos} />
       </Container>
     </Box>
   );
