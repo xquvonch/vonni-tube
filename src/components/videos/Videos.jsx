@@ -9,7 +9,9 @@ const Videos = ({ videos, suggested, loading = true }) => {
   }
 
   if (!videos || videos.length === 0) {
-    return <Typography color="text.secondary">Related videos topilmadi.</Typography>;
+    return (
+      <Typography color="text.secondary">Related videos topilmadi.</Typography>
+    );
   }
 
   return (
@@ -25,7 +27,6 @@ const Videos = ({ videos, suggested, loading = true }) => {
           xs={4}
           sm={4}
           md={suggested ? 12 : 3}
-
         >
           {item.id.videoId && <VideoCard video={item} />}
           {item.id.channelId && <ChannelCard video={item} />}

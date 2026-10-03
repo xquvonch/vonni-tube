@@ -54,7 +54,10 @@ const VidioDetail = () => {
                 setRelatedVideos(filteredVideos);
               }
             } catch (relatedError) {
-              console.error("Related videolarni olishda xatolik:", relatedError);
+              console.error(
+                "Related videolarni olishda xatolik:",
+                relatedError,
+              );
               if (isActive) setRelatedVideos([]);
             } finally {
               if (isActive) setRelatedLoading(false);
@@ -215,7 +218,8 @@ const VidioDetail = () => {
 
         {/* O'ng tomon: O'xshash Videolar */}
         <Box
-          width={{ xs: "100%", md: "28%" }}
+          className="overflow-y-auto scrollbar-hide"
+          width={{ xs: "100%", md: "25%" }}
           sx={{
             maxHeight: { md: "calc(200vh)" },
             overflowY: "auto",

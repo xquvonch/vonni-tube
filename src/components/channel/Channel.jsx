@@ -14,12 +14,12 @@ const Channel = () => {
     const getData = async () => {
       try {
         const dataChannelDetail = await ApiService.fetching(
-          `channels?part=snippet,brandingSettings,statistics&id=${id}`
+          `channels?part=snippet,brandingSettings,statistics&id=${id}`,
         );
         setChannelDetail(dataChannelDetail?.items?.[0] || null);
 
         const dataVideo = await ApiService.fetching(
-          `search?channelId=${id}&part=snippet%2&type=video&Cid&order=date&maxResults=62`
+          `search?channelId=${id}&part=snippet&type=video&order=date&maxResults=52`,
         );
         setVideos(dataVideo?.items || []);
       } catch (err) {
@@ -53,7 +53,7 @@ const Channel = () => {
       </Box>
 
       <Container maxWidth="xl" sx={{ mt: 5 }}>
-        <Videos videos={videos} marginTop={"-100px"}/>
+        <Videos videos={videos} marginTop={"-100px"} />
       </Container>
     </Box>
   );

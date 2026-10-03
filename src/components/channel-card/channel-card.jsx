@@ -2,7 +2,11 @@ import { CheckCircle } from "@mui/icons-material";
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ChannelCard = ({ video,marginTop }) => {
+const ChannelCard = ({ video, marginTop = 0 }) => {
+  const snippet = video?.snippet;
+  const subs = video?.statistics?.subscriberCount;
+
+  const channelId = video?.id?.channelId || video?.id;
   return (
     <Box
       sx={{
@@ -14,45 +18,44 @@ const ChannelCard = ({ video,marginTop }) => {
         width: { xs: "356px", md: "320px" },
         height: "326px",
         margin: "auto",
-        marginTop:marginTop
+        marginTop,
       }}
     >
-      <Link to={`/channel/${video?.snippet?.channelId}`}>
+      <Link
+       to={`/channel/${channelId}`}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
         <CardContent
           sx={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            alignItems: "center",
             textAlign: "center",
           }}
         >
           <CardMedia
-            image={video?.snippet?.thumbnails?.high?.url}
-            alt={video?.snippet?.title}
+            component="img"
+            image={snippet?.thumbnails?.high?.url}
+            alt={snippet?.title}
             sx={{
               borderRadius: "50%",
               height: "180px",
               width: "180px",
               mb: 2,
               border: "1px solid #e33e3e",
+              objectFit: "cover",
             }}
           />
 
           <Typography variant="h6">
-            {video?.snippet?.title}{" "}
-            <CheckCircle
-              sx={{ fontsize: "14px", color: "gray", ml: "5px" }}
-            />{" "}
+            {snippet?.title}
+            <CheckCircle sx={{ fontSize: "14px", color: "gray", ml: "5px" }} />
           </Typography>
 
-          {video?.statistics?.subscriberCount && (
-            <Typography
-              sx={{ fontsize: "15px", fontWeight: "500", color: "gray" }}
-            >
-              {parseInt(video?.statistics?.subscriberCount).toLocaleString(
-                "en-US",
-              )}{" "}
-              Subscribers
+          {subs && (
+            <Typography sx={{ fontSize: "15px", fontWeight: 500, color: "gray" }}>
+              {parseInt(subs, 10).toLocaleString("en-US")} Subscribers
             </Typography>
           )}
         </CardContent>
