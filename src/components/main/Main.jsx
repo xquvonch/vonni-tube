@@ -8,6 +8,7 @@ import { ApiService } from "../../service/api.service";
 const Main = () => {
   const [selectedCategory, setSelectedCategory] = useState("News");
   const [videos, setVideos] = useState([]);
+  const [dark, setDark] = useState(true);
 
   useEffect(() => {
     const getVideos = async () => {
@@ -31,13 +32,13 @@ const Main = () => {
         handlesellectedCategory={handleSelectedCategory}
         sellectedCategory={selectedCategory}
       />
-      <Box p={2} style={{ height: "90vh" }}>
+      <Box p={2} style={{ height: "90vh" }} mt={"128px"}>
         <Container maxWidth={"90%"}>
-          <Typography variant={"h4"} fontWeight={"bold"} mb={2}>
+          <Typography variant={"h4"} fontWeight={"bold"} mb={2} sx={{color:dark?'#fff':'#000'}}>
             {selectedCategory}{" "}
             <span style={{ color: colors.secondary }}>Vidios</span>
           </Typography>
-          <Videos videos={videos}/>
+          <Videos videos={videos} />
         </Container>
       </Box>
     </Stack>

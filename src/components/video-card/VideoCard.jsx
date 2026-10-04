@@ -11,8 +11,11 @@ import { colors } from "../../const/colors";
 import moment from "moment";
 import { CheckCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const VideoCard = ({ video }) => {
+  const [dark, setDark] = useState(true);
+
   const videoId = video?.id?.videoId;
 
   if (!videoId) return null;
@@ -51,13 +54,16 @@ const VideoCard = ({ video }) => {
           to={`/video/${videoId}`}
           style={{ textDecoration: "none", color: "inherit" }}
         >
-          <Typography my={"5px"} sx={{ opacity: ".4" }}>
+          <Typography
+            my={"5px"}
+            sx={{ opacity: dark ? "1" : ".4", color: colors.textColorWhite }}
+          >
             {moment(video?.snippet?.publishedAt).fromNow()}
           </Typography>
-          <Typography variant="subtitle1" fontWeight={"bold"}>
+          <Typography sx={{ opacity: dark ? "1" : ".4", color: colors.textColorWhite }} variant="subtitle1" fontWeight={"bold"}>
             {video?.snippet?.title?.slice(0, 50)}
           </Typography>
-          <Typography variant="subtitle2" sx={{ opacity: ".4" }}>
+          <Typography sx={{ opacity: dark ? "1" : ".4", color: colors.textColorWhite }} variant="subtitle2" >
             {video?.snippet?.description?.slice(0, 50)}
           </Typography>
         </Link>
@@ -72,7 +78,7 @@ const VideoCard = ({ video }) => {
             left={"16px"}
           >
             <Avatar src={video?.snippet?.thumbnails?.high?.url} />
-            <Typography variant={"subtitle2"} color={"gray"}>
+            <Typography sx={{ opacity: dark ? "1" : ".4", color: colors.textColorWhite }} variant={"subtitle2"} color={"gray"}>
               {video?.snippet?.channelTitle}
               <CheckCircle
                 sx={{ fontSize: "12px", color: "grey", marginLeft: "5px" }}

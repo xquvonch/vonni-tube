@@ -1,8 +1,12 @@
 import { CheckCircle } from "@mui/icons-material";
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { colors } from "../../const/colors";
 
 const ChannelCard = ({ video, marginTop = 0 }) => {
+  const [dark, setDark] = useState(true);
+
   const snippet = video?.snippet;
   const subs = video?.statistics?.subscriberCount;
 
@@ -22,7 +26,7 @@ const ChannelCard = ({ video, marginTop = 0 }) => {
       }}
     >
       <Link
-       to={`/channel/${channelId}`}
+        to={`/channel/${channelId}`}
         style={{ textDecoration: "none", color: "inherit" }}
       >
         <CardContent
@@ -48,13 +52,15 @@ const ChannelCard = ({ video, marginTop = 0 }) => {
             }}
           />
 
-          <Typography variant="h6">
+          <Typography sx={{ opacity: dark ? "1" : ".4", color: colors.textColorWhite }}>
             {snippet?.title}
             <CheckCircle sx={{ fontSize: "14px", color: "gray", ml: "5px" }} />
           </Typography>
 
           {subs && (
-            <Typography sx={{ fontSize: "15px", fontWeight: 500, color: "gray" }}>
+            <Typography
+              sx={{ fontSize: "15px", fontWeight: 500, color: "gray" }}
+            >
               {parseInt(subs, 10).toLocaleString("en-US")} Subscribers
             </Typography>
           )}
