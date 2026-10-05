@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { colors } from "../../const/colors";
 
 const ChannelCard = ({ video, marginTop = 0 }) => {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   const snippet = video?.snippet;
   const subs = video?.statistics?.subscriberCount;

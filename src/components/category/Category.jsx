@@ -4,7 +4,7 @@ import { colors } from "../../const/colors";
 import { useState } from "react";
 
 const Category = ({ handlesellectedCategory, sellectedCategory }) => {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   return (
     <Stack

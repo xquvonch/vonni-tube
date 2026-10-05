@@ -8,7 +8,7 @@ import { ApiService } from "../../service/api.service";
 const Main = () => {
   const [selectedCategory, setSelectedCategory] = useState("News");
   const [videos, setVideos] = useState([]);
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
     const getVideos = async () => {
