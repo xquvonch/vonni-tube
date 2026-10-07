@@ -1,11 +1,12 @@
 import { CheckCircle } from "@mui/icons-material";
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { colors } from "../../const/colors";
+import { useThemeStore } from "../../store/themeStore";
 
 const ChannelCard = ({ video, marginTop = 0 }) => {
-  const [dark, setDark] = useState(false);
+     const theme = useThemeStore((s) => s.theme);
+
 
   const snippet = video?.snippet;
   const subs = video?.statistics?.subscriberCount;
@@ -52,7 +53,7 @@ const ChannelCard = ({ video, marginTop = 0 }) => {
             }}
           />
 
-          <Typography sx={{ opacity: dark ? "1" : ".4", color: colors.textColorWhite }}>
+          <Typography sx={{ opacity: theme==='dark' ? "1" : ".4", color: colors.textColorWhite }}>
             {snippet?.title}
             <CheckCircle sx={{ fontSize: "14px", color: "gray", ml: "5px" }} />
           </Typography>

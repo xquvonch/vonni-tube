@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ApiService } from "../../service/api.service";
 import Loader from "../loader/Loader";
-import { Avatar, Box, Chip, Stack, Typography } from "@mui/material";
+import { Avatar, Box, Chip, colors, Stack, Typography } from "@mui/material";
 import ReactPlayer from "react-player";
 import parse from "html-react-parser";
+import { colors as colors1 } from "../../const/colors";
 import {
   CheckCircle,
   FavoriteOutlined,
@@ -13,6 +14,7 @@ import {
   Visibility,
 } from "@mui/icons-material";
 import Videos from "../videos/Videos";
+import { useThemeStore } from "../../store/themeStore";
 
 const VidioDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
@@ -20,6 +22,7 @@ const VidioDetail = () => {
   const [relatedLoading, setRelatedLoading] = useState(false);
   const { id } = useParams();
 
+  const theme = useThemeStore((s) => s.theme);
   useEffect(() => {
     let isActive = true;
     setVideoDetail(null);
@@ -138,14 +141,26 @@ const VidioDetail = () => {
                   size="small"
                   variant="outlined"
                   icon={<Tag style={{ fontSize: 16 }} />}
-                  sx={{ cursor: "pointer" }}
+                  sx={{
+                    cursor: "pointer",
+                    background:
+                      theme === "dark"
+                        ? colors1.secondary
+                        : colors1.secondaryDark,
+                  }}
                 />
               ))}
             </Stack>
           )}
 
           {/* Sarlavha */}
-          <Typography variant="h5" fontWeight="bold" mt={2} mb={1}>
+          <Typography
+            variant="h5"
+            fontWeight="bold"
+            mt={2}
+            mb={1}
+            color={theme === "dark" ? colors1.primary : colors1.primaryDark}
+          >
             {snippet.title}
           </Typography>
 
@@ -157,23 +172,46 @@ const VidioDetail = () => {
             py={1}
             sx={{ opacity: 0.8 }}
           >
-            <Stack direction="row" alignItems="center" gap="4px">
+            <Stack
+              direction="row"
+              alignItems="center"
+              gap="4px"
+              sx={{
+                color: theme === "dark" ? colors1.primary : colors1.primaryDark,
+                gap: "10px",
+              }}
+            >
+              <Visibility />
+
               <Typography variant="body2">
-                <Visibility />
                 {parseInt(statistics?.viewCount || 0).toLocaleString()} views
               </Typography>
             </Stack>
 
-            <Stack direction="row" alignItems="center" gap="4px">
+            <Stack
+              direction="row"
+              alignItems="center"
+              gap="4px"
+              sx={{
+                color: theme === "dark" ? colors1.primary : colors1.primaryDark,
+              }}
+            >
               <FavoriteOutlined fontSize="small" />
+
               <Typography variant="body2">
                 {parseInt(statistics?.likeCount || 0).toLocaleString()} likes
               </Typography>
             </Stack>
 
-            <Stack direction="row" alignItems="center" gap="4px">
+            <Stack
+              direction="row"
+              alignItems="center"
+              gap="4px"
+              color={theme === "dark" ? colors1.primary : colors1.primaryDark}
+            >
               <MarkChatRead fontSize="small" />
-              <Typography variant="body2">
+
+              <Typography variant="body2" >
                 {parseInt(statistics?.commentCount || 0).toLocaleString()}{" "}
                 comments
               </Typography>
@@ -191,7 +229,10 @@ const VidioDetail = () => {
                   alt={snippet.channelTitle}
                   src={snippet.thumbnails?.default?.url}
                 />
-                <Typography variant="subtitle1" fontWeight="bold">
+                <Typography variant="subtitle1" fontWeight="bold"  sx={{
+                  color:
+                    theme === "dark" ? colors1.primary : colors1.primaryDark,
+                }}>
                   {snippet.channelTitle}
                   <CheckCircle
                     sx={{ fontSize: "14px", color: "gray", ml: "6px" }}
@@ -210,7 +251,10 @@ const VidioDetail = () => {
               mt: 1,
             }}
           >
-            <Typography variant="body2">
+            <Typography variant="body2"  sx={{
+                  color:
+                    theme === "dark" ? colors1.primary : colors1.primaryDark,
+                }}>
               {parse(snippet.description || "")}
             </Typography>
           </Box>

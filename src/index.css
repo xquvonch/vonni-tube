@@ -4,13 +4,6 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  margin: 0;
-  min-height: 100%;
-  background: #1a1814;
-}
 .search-bar {
   border: none;
   outline: none;
@@ -34,12 +27,12 @@ body,
   transform: all 0.3s ease;
 }
 
-.category-btn:hover {
-  /* background-color: #76323f !important; */
-  background-color: #ffffff!important;
+/* .category-btn:hover {
+  background-color: #76323f !important;
+  /* background-color: #ffffff!important; */
 
-  color: black !important;
-}
+  /* color: black !important; */
+/* }  */
 .category-btn:hover span {
   color:black !important;
 }

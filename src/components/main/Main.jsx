@@ -4,11 +4,12 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import Videos from "../videos/Videos";
 import { ApiService } from "../../service/api.service";
+import { useThemeStore } from "../../store/themeStore";
 
 const Main = () => {
   const [selectedCategory, setSelectedCategory] = useState("News");
   const [videos, setVideos] = useState([]);
-  const [dark, setDark] = useState(false);
+   const theme = useThemeStore((s) => s.theme);
 
   useEffect(() => {
     const getVideos = async () => {
@@ -27,16 +28,16 @@ const Main = () => {
 
   const handleSelectedCategory = (category) => setSelectedCategory(category);
   return (
-    <Stack>
+    <Stack >
       <Category
         handlesellectedCategory={handleSelectedCategory}
         sellectedCategory={selectedCategory}
       />
       <Box p={2} style={{ height: "90vh" }} mt={"128px"}>
         <Container maxWidth={"90%"}>
-          <Typography variant={"h4"} fontWeight={"bold"} mb={2} sx={{color:dark?'#fff':'#000'}}>
+          <Typography variant={"h4"} fontWeight={"bold"} mb={2} sx={{color:theme==='dark'?colors.primary:colors.primaryDark}}>
             {selectedCategory}{" "}
-            <span style={{ color: colors.secondary }}>Vidios</span>
+            <span style={{ color:theme==='dark'? colors.secondary :colors.primaryDark}}>Vidios</span>
           </Typography>
           <Videos videos={videos} />
         </Container>

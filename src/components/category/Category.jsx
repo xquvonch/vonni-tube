@@ -1,10 +1,11 @@
 import { Stack } from "@mui/material";
 import { category } from "../../const/index";
 import { colors } from "../../const/colors";
-import { useState } from "react";
+import { useThemeStore } from "../../store/themeStore";
 
 const Category = ({ handlesellectedCategory, sellectedCategory }) => {
-  const [dark, setDark] = useState(false);
+   const theme = useThemeStore((s) => s.theme);
+
 
   return (
     <Stack
@@ -19,7 +20,7 @@ const Category = ({ handlesellectedCategory, sellectedCategory }) => {
         position: "fixed",
         top: "86px",
         zIndex: 999,
-        background: colors.primary,
+        background:theme==='dark'? colors.primaryDark:colors.primary,
       }}
     >
       {category.map((item) => {
@@ -32,10 +33,10 @@ const Category = ({ handlesellectedCategory, sellectedCategory }) => {
               background: item.name === sellectedCategory && colors.secondary,
               color:
                 item.name === sellectedCategory
-                  ? dark
-                    ? "#000"
-                    : "#fff"
-                  : colors.secondary,
+                  ? theme==='dark'
+                    ? "#fff"
+                    : "#000"
+                  : theme==='dark'?colors.secondary:colors.secondaryDark,
             }}
             onClick={() => handlesellectedCategory(item.name)}
           >
@@ -43,10 +44,10 @@ const Category = ({ handlesellectedCategory, sellectedCategory }) => {
               style={{
                 color:
                   item.name === sellectedCategory
-                    ? dark
-                      ? "#000"
-                      : "#fff"
-                    : colors.secondary,
+                    ? theme==='dark'
+                      ? "#fff"
+                      : "#000"
+                    : theme==='dark'?colors.secondary:colors.secondaryDark,
                 marginRight: "15px",
               }}
             >
