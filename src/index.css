@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   margin: 0px;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;;
 }
 
 .search-bar {
@@ -10,7 +13,7 @@
   width: 350px;
 }
 
-.category-btn {
+.category-btn, .category-btn-light {
   font-weight: bold;
   text-transform: capitalize;
   display: flex;
@@ -26,17 +29,46 @@
   border-radius: 20px;
   transform: all 0.3s ease;
 }
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
 
+
+.lightInputBackG{
+  background-color: #fff;
+}
+.darkInputBackG{
+  background-color: #111827;
+}
+.lightBackground{
+   min-height: 100vh;
+  background-color: #fff;
+}
+.darkBackground{
+   min-height: 100vh;
+  background-color: #111827;
+}
 /* .category-btn:hover {
   background-color: #76323f !important;
   /* background-color: #ffffff!important; */
 
   /* color: black !important; */
 /* }  */
-.category-btn:hover span {
-  color:black !important;
+.category-btn:hover {
+  background-color:#5E2732 !important;
 }
-
+.category-btn:hover span{
+  color:white !important;
+}
+.category-btn-light:hover{
+background: #082F70;
+}
+.category-btn-light:hover span{
+  color:white !important;
+}
 .react-player {
   height: 77vh !important;
   width: 100% !important;

@@ -57,14 +57,20 @@ const VideoCard = ({ video }) => {
         >
           <Typography
             my={"5px"}
-            sx={{ opacity: theme==='dark' ? "1" : ".4", color: theme==='dark'?colors.primary:colors.primaryDark }}
+            sx={{
+              //  opacity: theme==='dark' ? "1" : ".4", 
+               color: theme==='dark'?colors.primary:colors.primaryDark }}
           >
             {moment(video?.snippet?.publishedAt).fromNow()}
           </Typography>
-          <Typography sx={{ opacity: theme==='dark' ? "1" : ".4", color: theme==='dark'?colors.primary:colors.primaryDark  }} variant="subtitle1" fontWeight={"bold"}>
+          <Typography sx={{ 
+            // opacity: theme==='dark' ? "1" : ".4",
+             color: theme==='dark'?colors.primary:colors.primaryDark  }} variant="subtitle1" fontWeight={"bold"}>
             {video?.snippet?.title?.slice(0, 50)}
           </Typography>
-          <Typography sx={{ opacity: theme==='dark' ? "1" : ".4", color: theme==='dark'?colors.primary:colors.primaryDark }} variant="subtitle2" >
+          <Typography sx={{ 
+            // opacity: theme==='dark' ? "1" : ".4", 
+            color: theme==='dark'?colors.primary:colors.primaryDark }} variant="subtitle2" >
             {video?.snippet?.description?.slice(0, 50)}
           </Typography>
         </Link>
@@ -79,7 +85,9 @@ const VideoCard = ({ video }) => {
             left={"16px"}
           >
             <Avatar src={video?.snippet?.thumbnails?.high?.url} />
-            <Typography sx={{ opacity:theme==='dark' ? "1" : ".4", color: theme==='light'?colors.primary:colors.primaryDark }} variant={"subtitle2"} color={"gray"}>
+            <Typography sx={{ 
+              // opacity:theme==='dark' ? "1" : ".4",
+               color: theme==='dark'?colors.primary:colors.primaryDark }} variant={"subtitle2"}>
               {video?.snippet?.channelTitle}
               <CheckCircle
                 sx={{ fontSize: "12px", color: "grey", marginLeft: "5px" }}

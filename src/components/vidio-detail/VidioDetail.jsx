@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ApiService } from "../../service/api.service";
 import Loader from "../loader/Loader";
-import { Avatar, Box, Chip, colors, Stack, Typography } from "@mui/material";
+import { Avatar, Box, Chip, Stack, Typography } from "@mui/material";
 import ReactPlayer from "react-player";
 import parse from "html-react-parser";
 import { colors as colors1 } from "../../const/colors";

@@ -37,7 +37,7 @@ const Main = () => {
         <Container maxWidth={"90%"}>
           <Typography variant={"h4"} fontWeight={"bold"} mb={2} sx={{color:theme==='dark'?colors.primary:colors.primaryDark}}>
             {selectedCategory}{" "}
-            <span style={{ color:theme==='dark'? colors.secondary :colors.primaryDark}}>Vidios</span>
+            <span style={{ color:theme==='dark'? colors.secondary :colors.secondaryDark}}>Vidios</span>
           </Typography>
           <Videos videos={videos} />
         </Container>

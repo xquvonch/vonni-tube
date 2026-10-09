@@ -48,19 +48,19 @@ const ChannelCard = ({ video, marginTop = 0 }) => {
               height: "180px",
               width: "180px",
               mb: 2,
-              border: "1px solid #e33e3e",
+              border: `1px solid ${colors.secondary}`,
               objectFit: "cover",
             }}
           />
 
-          <Typography sx={{ opacity: theme==='dark' ? "1" : ".4", color: colors.textColorWhite }}>
+          <Typography sx={{ color:theme==='dark'?colors.primary:'#000'  }}>
             {snippet?.title}
             <CheckCircle sx={{ fontSize: "14px", color: "gray", ml: "5px" }} />
           </Typography>
 
           {subs && (
             <Typography
-              sx={{ fontSize: "15px", fontWeight: 500, color: "gray" }}
+              sx={{ fontSize: "15px", fontWeight: 500, color: theme==='dark'?colors.primary:colors.primaryDark }}
             >
               {parseInt(subs, 10).toLocaleString("en-US")} Subscribers
             </Typography>

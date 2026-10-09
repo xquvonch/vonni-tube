@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import { Main, Channel, Navbar, Search, VidioDetail } from "../index";
@@ -7,10 +7,13 @@ import { useThemeStore } from "../../store/themeStore";
 
 const App = () => {
   const theme = useThemeStore((s) => s.theme);
-
+ useEffect(() => {
+    document.body.style.backgroundColor =
+      theme === "dark" ? colors.primaryDark : colors.primary;
+  }, [theme]);
   return (
     <Box
-      sx={{
+      sx={{minHeight: "100vh",
         background: theme === "dark" ? colors.primaryDark : colors.primary,
       }}
     >

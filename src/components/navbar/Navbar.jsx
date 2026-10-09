@@ -29,7 +29,6 @@ const Navbar = () => {
       </Link>
       <SearchBar />
       <ThemeButton/>
-      <Box />
     </Stack>
   );
 };

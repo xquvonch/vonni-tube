@@ -4,8 +4,7 @@ import { colors } from "../../const/colors";
 import { useThemeStore } from "../../store/themeStore";
 
 const Category = ({ handlesellectedCategory, sellectedCategory }) => {
-   const theme = useThemeStore((s) => s.theme);
-
+  const theme = useThemeStore((s) => s.theme);
 
   return (
     <Stack
@@ -20,23 +19,28 @@ const Category = ({ handlesellectedCategory, sellectedCategory }) => {
         position: "fixed",
         top: "86px",
         zIndex: 999,
-        background:theme==='dark'? colors.primaryDark:colors.primary,
+        background: theme === "dark" ? colors.primaryDark : colors.primary,
       }}
     >
       {category.map((item) => {
         return (
           <button
             key={item.name}
-            className="category-btn"
+            className={`${theme==='dark'?'category-btn':'category-btn-light'}`}
             style={{
               borderRadius: "0px",
-              background: item.name === sellectedCategory && colors.secondary,
+              background:
+                item.name === sellectedCategory &&
+                (theme === "dark" ? colors.secondary : colors.secondaryDark),
               color:
                 item.name === sellectedCategory
-                  ? theme==='dark'
-                    ? "#fff"
-                    : "#000"
-                  : theme==='dark'?colors.secondary:colors.secondaryDark,
+                  ? // ? theme==='dark'
+                    // ?
+                    "#fff"
+                  : // : "#000"
+                    theme === "dark"
+                    ? colors.primary
+                    : colors.secondaryDark,
             }}
             onClick={() => handlesellectedCategory(item.name)}
           >
@@ -44,14 +48,17 @@ const Category = ({ handlesellectedCategory, sellectedCategory }) => {
               style={{
                 color:
                   item.name === sellectedCategory
-                    ? theme==='dark'
-                      ? "#fff"
-                      : "#000"
-                    : theme==='dark'?colors.secondary:colors.secondaryDark,
+                    ? // ?
+                      //  theme==='dark'
+                      "#fff"
+                    : // : "#000"
+                      theme === "dark"
+                      ? colors.pri
+                      : colors.secondaryDark,
                 marginRight: "15px",
               }}
             >
-              {item.icon}
+              <span>{item.icon}</span>
             </span>
             <span style={{ opacity: "1" }}>{item.name}</span>
           </button>

@@ -43,7 +43,7 @@ const Channel = () => {
           zIndex={10}
           sx={{
             backgroundImage: bannerUrl ? `url(${bannerUrl})` : "none",
-            backgroundColor: "#272727",
+            backgroundColor: "#000",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
