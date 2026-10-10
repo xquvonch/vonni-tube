@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Box } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import { Main, Channel, Navbar, Search, VidioDetail } from "../index";
@@ -7,24 +7,27 @@ import { useThemeStore } from "../../store/themeStore";
 
 const App = () => {
   const theme = useThemeStore((s) => s.theme);
- useEffect(() => {
+  useEffect(() => {
     document.body.style.backgroundColor =
       theme === "dark" ? colors.primaryDark : colors.primary;
   }, [theme]);
   return (
     <Box
-      sx={{minHeight: "100vh",
+      sx={{
+        minHeight: "100vh",
         background: theme === "dark" ? colors.primaryDark : colors.primary,
       }}
     >
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/channel/:id" element={<Channel />} />
-        <Route path="/search/:id" element={<Search />} />
-        <Route path="/video/:id" element={<VidioDetail />} />
-      </Routes>
+      <Box mt={"128px"}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/channel/:id" element={<Channel />} />
+          <Route path="/search/:id" element={<Search />} />
+          <Route path="/video/:id" element={<VidioDetail />} />
+        </Routes>
+      </Box>
     </Box>
   );
 };

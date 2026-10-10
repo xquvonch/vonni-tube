@@ -23,6 +23,7 @@ const VideoCard = ({ video }) => {
 
   return (
     <Card
+    className="vidio_card"
       sx={{
         width: { xs: "100%", sm: "360px", md: "340px" },
         borderRadius: "10px",

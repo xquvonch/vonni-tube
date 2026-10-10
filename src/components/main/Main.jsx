@@ -33,7 +33,7 @@ const Main = () => {
         handlesellectedCategory={handleSelectedCategory}
         sellectedCategory={selectedCategory}
       />
-      <Box p={2} style={{ height: "90vh" }} mt={"128px"}>
+      <Box p={2} style={{ height: "90vh" }} >
         <Container maxWidth={"90%"}>
           <Typography variant={"h4"} fontWeight={"bold"} mb={2} sx={{color:theme==='dark'?colors.primary:colors.primaryDark}}>
             {selectedCategory}{" "}

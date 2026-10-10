@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
   margin: 0px;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;;
+  font-family: "Roboto", sans-serif;
 }
 
 .search-bar {
@@ -13,7 +13,8 @@
   width: 350px;
 }
 
-.category-btn, .category-btn-light {
+.category-btn,
+.category-btn-light {
   font-weight: bold;
   text-transform: capitalize;
   display: flex;
@@ -27,47 +28,53 @@
   padding: 7px 15px;
   margin: 10px 0px;
   border-radius: 20px;
-  transform: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 html,
 body,
 #root {
   min-height: 100%;
   margin: 0;
+  --black-gradient: linear-gradient(
+    144.39deg,
+    #ffffff -278.56%,
+    #6d6d6d -78.47%,
+    #11101d 91.61%
+  );
+  --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
 }
 
-
-.lightInputBackG{
+.lightInputBackG {
   background-color: #fff;
 }
-.darkInputBackG{
+.darkInputBackG {
   background-color: #111827;
 }
-.lightBackground{
-   min-height: 100vh;
+.lightBackground {
+  min-height: 100vh;
   background-color: #fff;
 }
-.darkBackground{
-   min-height: 100vh;
+.darkBackground {
+  min-height: 100vh;
   background-color: #111827;
 }
 /* .category-btn:hover {
   background-color: #76323f !important;
   /* background-color: #ffffff!important; */
 
-  /* color: black !important; */
+/* color: black !important; */
 /* }  */
 .category-btn:hover {
-  background-color:#5E2732 !important;
+  background-color: #5e2732 !important;
 }
-.category-btn:hover span{
-  color:white !important;
+.category-btn:hover span {
+  color: white !important;
 }
-.category-btn-light:hover{
-background: #082F70;
+.category-btn-light:hover {
+  background: #082f70;
 }
-.category-btn-light:hover span{
-  color:white !important;
+.category-btn-light:hover span {
+  color: white !important;
 }
 .react-player {
   height: 77vh !important;
@@ -90,4 +97,9 @@ background: #082F70;
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+.vidio_card:hover{
+  background: var(--black-gradient);
+  box-shadow: var(--card-shadow);
 }

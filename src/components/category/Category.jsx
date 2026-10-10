@@ -10,7 +10,9 @@ const Category = ({ handlesellectedCategory, sellectedCategory }) => {
     <Stack
       direction={"row"}
       sx={{
-        overflowY: "auto",
+        overflowX: "auto",
+        overflowY:'hidden',
+        width:'100%',
         "&::-webkit-scrollbar": {
           display: "none",
         },
