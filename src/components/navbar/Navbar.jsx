@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import {  Stack } from "@mui/material";
 import logo from "../../const/logo_concept_1_minimalist.png";
 import { colors } from "../../const/colors";
 import { Link } from "react-router-dom";
