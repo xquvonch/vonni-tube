@@ -10,25 +10,30 @@ const SearchBar = () => {
 
   const navigate = useNavigate();
 
-
   const submitHandler = (e) => {
     e.preventDefault();
     if (value) {
       navigate(`/search/${value}`);
       setvalue("");
-      console.log('click')
+      console.log("click");
     }
   };
 
   return (
     <Paper
+    
       onSubmit={submitHandler}
       component={"form"}
       sx={{
         border: `1px solid ${theme === "dark" ? colors.secondary : colors.secondaryDark}`,
         pl: 2,
+        display:'flex',
+        alignItems:'center',
+
+        width: { xs: "100%", sm: "400px" },
+        maxWidth: { xs: "220px", sm: "400px" },
         boxShadow: "none",
-        mr: 5,
+        mr: { xs: 1, sm: 5 },
         background: theme === "dark" ? colors.primaryDark : colors.primary,
       }}
     >
@@ -42,10 +47,16 @@ const SearchBar = () => {
         onChange={(e) => setvalue(e.target.value)}
         style={{
           color: theme === "dark" ? colors.secondary : colors.secondaryDark,
+          flex: 1,
+          minWidth: 0, // flex ichida input qisqara olishi uchun
+          width: "100%",
+          border: "none",
+          outline: "none",
+          fontSize: "16px",
         }}
       />
 
-      <IconButton type="submit" >
+      <IconButton type="submit">
         <SearchIcon
           sx={{
             color: theme === "dark" ? colors.primary : colors.secondaryDark,
