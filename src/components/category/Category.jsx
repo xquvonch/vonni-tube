@@ -16,6 +16,7 @@ const Category = ({ handlesellectedCategory, sellectedCategory }) => {
         "&::-webkit-scrollbar": {
           display: "none",
         },
+        paddingX:'40px',
         scrollbarWidth: "none",
         msOverflowStyle: "none",
         position: "fixed",

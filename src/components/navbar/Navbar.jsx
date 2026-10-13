@@ -19,6 +19,7 @@ const Navbar = () => {
       sx={{
         position: "fixed",
         width:'100%',
+        paddingX:'32px',
         top: "0",
         zIndex: 999,
         background:theme==='dark'?colors.primaryDark:colors.primary,
