@@ -98,9 +98,13 @@ body,
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+.vidio_card {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
 
-.vidio_card:hover{
-  background: var(--black-gradient);
-  box-shadow: var(--card-shadow);
+.vidio_card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(118, 50, 63, 0.25) !important;
+  /* outline: 1px solid rgba(118, 50, 63, 0.5); */
 }
 

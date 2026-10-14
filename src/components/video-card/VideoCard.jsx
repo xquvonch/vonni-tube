@@ -23,10 +23,12 @@ const VideoCard = ({ video }) => {
 
   return (
     <Card
+    elevation={0}
     className="vidio_card"
       sx={{
         width: { xs: "100%", sm: "360px", md: "340px" },
         borderRadius: "10px",
+        boxShadow:'none'
       }}
     >
       <Link
@@ -50,6 +52,7 @@ const VideoCard = ({ video }) => {
           background:theme==='dark'?colors.primaryDark:colors.primary,
           height: "200px",
           position: "relative",
+        
         }}
       >
         <Link
@@ -87,6 +90,7 @@ const VideoCard = ({ video }) => {
           >
             <Avatar src={video?.snippet?.thumbnails?.high?.url} />
             <Typography sx={{ 
+               
               // opacity:theme==='dark' ? "1" : ".4",
                color: theme==='dark'?colors.primary:colors.primaryDark }} variant={"subtitle2"}>
               {video?.snippet?.channelTitle}

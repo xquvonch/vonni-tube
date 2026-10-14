@@ -5,7 +5,7 @@ import Loader from "../loader/Loader";
 import { Avatar, Box, Chip, Stack, Typography } from "@mui/material";
 import ReactPlayer from "react-player";
 import parse from "html-react-parser";
-import { colors as colors1 } from "../../const/colors";
+import { colors, colors as colors1 } from "../../const/colors";
 import {
   CheckCircle,
   FavoriteOutlined,
@@ -143,6 +143,7 @@ const VidioDetail = () => {
                   icon={<Tag style={{ fontSize: 16 }} />}
                   sx={{
                     cursor: "pointer",
+                    color:colors.primary,
                     background:
                       theme === "dark"
                         ? colors1.secondary
