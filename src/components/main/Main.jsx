@@ -1,30 +1,33 @@
 import { Category } from "../index";
 import { colors } from "../../const/colors";
 import { Box, Container, Stack, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Videos from "../videos/Videos";
-import { ApiService } from "../../service/api.service";
 import { useThemeStore } from "../../store/themeStore";
+import { useInfiniteVideos } from "../../hooks/useInfiniteVideos";
 
 const Main = () => {
   const [selectedCategory, setSelectedCategory] = useState("News");
-  const [videos, setVideos] = useState([]);
+  // const [videos, setVideos] = useState([]);
    const theme = useThemeStore((s) => s.theme);
+const { videos, loading, hasMore, loadMore } =
+    useInfiniteVideos(selectedCategory);
 
-  useEffect(() => {
-    const getVideos = async () => {
-      try {
-        const data = await ApiService.fetching(
-          `search?part=snippet&q=${encodeURIComponent(selectedCategory)}`,
-        );
-        setVideos(data.items || []);
-      } catch (err) {
-        console.log(err);
-        setVideos([]);
-      }
-    };
-    getVideos();
-  }, [selectedCategory]);
+  // const handleSelectedCategory = (category) => setSelectedCategory(category);
+  // useEffect(() => {
+  //   const getVideos = async () => {
+  //     try {
+  //       const data = await ApiService.fetching(
+  //         `search?part=snippet&q=${encodeURIComponent(selectedCategory)}`,
+  //       );
+  //       setVideos(data.items || []);
+  //     } catch (err) {
+  //       console.log(err);
+  //       setVideos([]);
+  //     }
+  //   };
+  //   getVideos();
+  // }, [selectedCategory]);
 
   const handleSelectedCategory = (category) => setSelectedCategory(category);
   return (
@@ -39,7 +42,7 @@ const Main = () => {
             {selectedCategory}{" "}
             <span style={{ color:theme==='dark'? colors.secondary :colors.secondaryDark}}>Vidios</span>
           </Typography>
-          <Videos videos={videos} />
+          <Videos videos={videos} loading={loading} hasMore={hasMore} loadMore={loadMore} />
         </Container>
       </Box>
     </Stack>

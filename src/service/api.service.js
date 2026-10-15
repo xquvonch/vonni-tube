@@ -6,12 +6,12 @@ const API_KEY = "AIzaSyCElhHYIArOdxk4Ml9e21LaZwWPRqXDwzI"
 
 
 export const ApiService = {
-  async fetching(endpoint) {
+  async fetching(endpoint, extraParams={}) {
     try {
-      const params = { key: API_KEY };
+      const params = { key: API_KEY,...extraParams };
 
-      if (endpoint.startsWith("search?")) {
-        params.maxResults = 52;
+      if (endpoint.startsWith("search?") && !params.maxResults) {
+        params.maxResults = 13;
       }
 
       const response = await axios.get(`${BASE_URL}/${endpoint}`, {
