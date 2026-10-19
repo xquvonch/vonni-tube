@@ -17,7 +17,7 @@ const Videos = ({
 }) => {
   const theme = useThemeStore((s) => s.theme);
   const sentinel = useRef(null);
-console.log({ n: videos?.length, hasMore, hasLoadMore: !!loadMore });
+// console.log({ n: videos?.length, hasMore, hasLoadMore: !!loadMore });
   useEffect(() => {
     const el = sentinel.current;
     if (!el || !loadMore) return;

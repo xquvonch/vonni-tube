@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="VonniTube">
+  <defs>
+    <linearGradient id="vt-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF3D6E"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="8" width="60" height="48" rx="14" fill="url(#vt-grad)"/>
+  <path d="M26 21 L26 43 L46 32 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/>
+</svg>

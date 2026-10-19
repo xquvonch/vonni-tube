@@ -15,7 +15,7 @@ import {
   TravelExplore,
 } from "@mui/icons-material";
 
-export const logo = "./react.png";
+// export const logo = "./logo.svg";
 
 export const category = [
   { name: "News", icon: <Home /> },

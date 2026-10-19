@@ -30,7 +30,7 @@ const SearchBar = () => {
         display:'flex',
         alignItems:'center',
 
-        width: { xs: "100%", sm: "400px" },
+        width: { xs: "100px", sm: "400px" },
         maxWidth: { xs: "220px", sm: "400px" },
         boxShadow: "none",
         mr: { xs: 1, sm: 5 },

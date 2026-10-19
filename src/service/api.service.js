@@ -11,7 +11,7 @@ export const ApiService = {
       const params = { key: API_KEY,...extraParams };
 
       if (endpoint.startsWith("search?") && !params.maxResults) {
-        params.maxResults = 13;
+        params.maxResults = 48;
       }
 
       const response = await axios.get(`${BASE_URL}/${endpoint}`, {

@@ -53,7 +53,7 @@ const Channel = () => {
       </Box>
 
       <Container maxWidth="xl" sx={{ mt: 5 }}>
-        <Videos videos={videos} marginTop={"-100px"} />
+        <Videos videos={videos} marginTop={"-100px"}  />
       </Container>
     </Box>
   );

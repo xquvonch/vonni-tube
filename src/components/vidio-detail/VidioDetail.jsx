@@ -29,6 +29,7 @@ const VidioDetail = () => {
     setRelatedVideos([]);
     setRelatedLoading(false);
 
+
     const getVideo = async () => {
       try {
         const data = await ApiService.fetching(
@@ -95,8 +96,8 @@ const VidioDetail = () => {
       </Box>
     );
   }
-
   const { snippet, statistics } = videoDetail;
+    console.log(videoDetail)
 
   return (
     <Box minHeight="90vh" p={{ xs: 2, md: 4 }}>

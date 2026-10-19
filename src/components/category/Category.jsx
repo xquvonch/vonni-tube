@@ -31,7 +31,7 @@ const Category = ({ handlesellectedCategory, sellectedCategory }) => {
             key={item.name}
             className={`${theme==='dark'?'category-btn':'category-btn-light'}`}
             style={{
-              borderRadius: "0px",
+              borderRadius: "10px",
               background:
                 item.name === sellectedCategory &&
                 (theme === "dark" ? colors.secondary : colors.secondaryDark),
