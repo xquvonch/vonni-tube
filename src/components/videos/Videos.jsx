@@ -38,7 +38,7 @@ const Videos = ({
         </>
       );
     }
-    return <Typography color="text.secondary">Videos topilmadi.</Typography>;
+    return <Typography color={theme === "dark" ? colors.primary : colors.primaryDark}>Videolar topilmadi...</Typography>;
   }
 
   // if (!videos || videos.length === 0) {
